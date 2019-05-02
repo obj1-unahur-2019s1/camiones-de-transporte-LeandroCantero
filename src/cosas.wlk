@@ -11,7 +11,7 @@ object bumblebee {
 	method transformar() { transformadoEnAuto = not transformadoEnAuto }
 }
 
-//Paquete de ladrillos: cada ladrillo pesa 2 kilos, la cantidad de ladrillos que tiene puede variar. La peligrosidad es 2.
+//Paquete de ladrillos:
 object paqueteDeLadrillos {
 	var ladrillos = 0
 	method peso(){return ladrillos*2}
@@ -19,7 +19,7 @@ object paqueteDeLadrillos {
 	method cantidadLadrillos(cantidad){ladrillos = cantidad}	
 }
   
-//Arena a granel: el peso es variable, la peligrosidad es 1.
+//Arena a granel:
 object arenaAGranel {
 	var peso = 0
 	method peso(){return peso}
@@ -27,8 +27,7 @@ object arenaAGranel {
 	method agregarPeso(kg){return peso += kg}
 }
  
-//Batería antiaérea : el peso es 300 kilos si está con los misiles o 200 en otro caso. 
-//En cuanto a la peligrosidad es 100 si está con los misiles y 0 en otro caso.
+//Batería antiaérea:
 object bateriaAGranel {
 	var misiles = false
 	method peso(){return if (misiles) {300} else {200}}
@@ -36,9 +35,7 @@ object bateriaAGranel {
 	method ponerMisiles(){misiles = true}
 }
 
-//Contenedor portuario: un contenedor puede tener otras cosas adentro. 
-//El peso es 100 + la suma de todas las cosas que estén adentro. Es tan peligroso como el objeto más peligroso que contiene. 
-//Si está vacío, su peligrosidad es 0.
+//Contenedor portuario:
 object contenedorPortuario {
 	var cosas = []
 	method peso(){return cosas.sum({cosa => cosa.peso()}) + 100}
@@ -46,12 +43,12 @@ object contenedorPortuario {
 		if (cosas.isEmpty()){
 			return 0
 		}
-		else return cosas.max({cosa => cosa.nivelPeligrosidad()})
+		else return cosas.max({cosa => cosa.nivelPeligrosidad()})//arreglar
 	}
 	method aniadirObjetos(objeto){cosas.add(objeto)}
 }
 
-//Residuos radioactivos: el peso es variable y su peligrosidad es 200.
+//Residuos radioactivos:
 object residuosRadioactivos {
 	var peso = 0
 	method peso(){return peso}
@@ -60,7 +57,6 @@ object residuosRadioactivos {
 }
  
 //Embalaje de seguridad:
-
 object embalajeDeSeguridad {
 	var cosa
 	method envolverCosa(objeto){cosa = objeto}

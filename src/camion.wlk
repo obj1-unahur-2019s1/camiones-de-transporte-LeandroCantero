@@ -30,4 +30,20 @@ object camion {
 	method puedeCircularEnRuta(nivelMaximoPeligrosidad){
 		return cosas.any({cosa => cosa.nivelPeligrosidad() > nivelMaximoPeligrosidad})
 	}
+	
+//tieneAlgoQuePesaEntre(min, max): indica si el peso de alguna de las cosas que tiene el camión está en ese intervalo;
+	method tieneAlgoQuePesaEntre(min, max){
+		return cosas.any({cosa => cosa.peso().between(min, max)})
+	}
+
+//cosaMasPesada(): la cosa más pesada que tenga el camión. Ojo que lo que se pide es la cosa y no su peso.
+	method cosaMasPesada(){
+		return cosas.max({cosa => cosa.peso()})
+	}
+//totalBultos(): la suma de la cantidad de bultos que está transportando. 
+//KnightRider, arena a granel y residuos radioactivos son 1 bulto. Bumblebee y embalaje de seguridad son dos. 
+//Paquete de ladrillos es 1 hasta 100 ladrillos, 2 de 101 a 300, 3 301 o más. 
+//Batería antiaérea: 1 si no tiene misiles, 2 si tiene. Contenedor portuario: 1 + los bultos que tiene adentro.
+//pesos(): devuelve una lista con los pesos de cada cosa que tiene el camión.
 }
+
