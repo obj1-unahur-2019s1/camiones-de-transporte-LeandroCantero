@@ -40,10 +40,15 @@ object camion {
 	method cosaMasPesada(){
 		return cosas.max({cosa => cosa.peso()})
 	}
-//totalBultos(): la suma de la cantidad de bultos que está transportando. 
+//totalBultos(): la suma de la cantidad de bultos que está transportando.
 //KnightRider, arena a granel y residuos radioactivos son 1 bulto. Bumblebee y embalaje de seguridad son dos. 
 //Paquete de ladrillos es 1 hasta 100 ladrillos, 2 de 101 a 300, 3 301 o más. 
 //Batería antiaérea: 1 si no tiene misiles, 2 si tiene. Contenedor portuario: 1 + los bultos que tiene adentro.
+	method totalBultos(){
+	} 
 //pesos(): devuelve una lista con los pesos de cada cosa que tiene el camión.
+	method pesos(){
+		return cosas.map({cosa => cosa.peso()})
+	}
 }
 

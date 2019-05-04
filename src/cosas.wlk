@@ -43,9 +43,9 @@ object contenedorPortuario {
 		if (cosas.isEmpty()){
 			return 0
 		}
-		else return cosas.max({cosa => cosa.nivelPeligrosidad()})//arreglar
+		else return cosas.max({cosa => cosa.nivelPeligrosidad()}).nivelPeligrosidad()//mejorar
 	}
-	method aniadirObjetos(objeto){cosas.add(objeto)}
+	method aniadirObjeto(objeto){cosas.add(objeto)}
 }
 
 //Residuos radioactivos:
