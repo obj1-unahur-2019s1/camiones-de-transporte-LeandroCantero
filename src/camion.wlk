@@ -31,12 +31,10 @@ object camion {
 		return cosas.any({cosa => cosa.nivelPeligrosidad() > nivelMaximoPeligrosidad})
 	}
 	
-//tieneAlgoQuePesaEntre(min, max): indica si el peso de alguna de las cosas que tiene el camión está en ese intervalo;
 	method tieneAlgoQuePesaEntre(min, max){
 		return cosas.any({cosa => cosa.peso().between(min, max)})
 	}
 
-//cosaMasPesada(): la cosa más pesada que tenga el camión. Ojo que lo que se pide es la cosa y no su peso.
 	method cosaMasPesada(){
 		return cosas.max({cosa => cosa.peso()})
 	}
@@ -46,7 +44,7 @@ object camion {
 //Batería antiaérea: 1 si no tiene misiles, 2 si tiene. Contenedor portuario: 1 + los bultos que tiene adentro.
 	method totalBultos(){
 	} 
-//pesos(): devuelve una lista con los pesos de cada cosa que tiene el camión.
+	
 	method pesos(){
 		return cosas.map({cosa => cosa.peso()})
 	}
