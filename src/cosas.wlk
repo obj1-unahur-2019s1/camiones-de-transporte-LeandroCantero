@@ -43,7 +43,7 @@ object contenedorPortuario {
 		if (cosas.isEmpty()){
 			return 0
 		}
-		else return cosas.max({cosa => cosa.nivelPeligrosidad()}).nivelPeligrosidad()//mejorar
+		else return cosas.map({cosa => cosa.nivelPeligrosidad()}).max()
 	}
 	method aniadirObjeto(objeto){cosas.add(objeto)}
 }
