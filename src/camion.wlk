@@ -1,7 +1,8 @@
 import cosas.*
 
-object camion {
+class Camion {
 	const property cosas = []
+	const tara = 1000
 	
 	method cargar(unaCosa) {
 		cosas.add(unaCosa)
@@ -12,7 +13,7 @@ object camion {
 	}
 	
 	method pesoTotal(){
-		return cosas.sum({cosa => cosa.peso()}) + 1000
+		return cosas.sum({cosa => cosa.peso()}) + tara
 	}
 	
 	method excedidoDePeso() {
@@ -24,11 +25,11 @@ object camion {
 	}
 	
 	method objetosMasPeligrososQue(objeto){
-		return cosas.filter({cosa => cosa.nivelPeligrosidad() > objeto.nivelPeligrosidad()})
+		return self.objetosPeligrosos(objeto.nivelPeligrosidad())
 	}
 	
 	method puedeCircularEnRuta(nivelMaximoPeligrosidad){
-		return cosas.any({cosa => cosa.nivelPeligrosidad() > nivelMaximoPeligrosidad})
+		return self.objetosPeligrosos(nivelMaximoPeligrosidad).isEmpty()
 	}
 	
 	method tieneAlgoQuePesaEntre(min, max){
@@ -41,9 +42,19 @@ object camion {
 //totalBultos(): la suma de la cantidad de bultos que está transportando.
 //KnightRider, arena a granel y residuos radioactivos son 1 bulto. Bumblebee y embalaje de seguridad son dos. 
 //Paquete de ladrillos es 1 hasta 100 ladrillos, 2 de 101 a 300, 3 301 o más. 
-//Batería antiaérea: 1 si no tiene misiles, 2 si tiene. Contenedor portuario: 1 + los bultos que tiene adentro.
-	method totalBultos(){
-	} 
+//Batería antiaérea: 1 si no tiene misiles, 2 si tiene. 
+//Contenedor portuario: 1 + los bultos que tiene adentro.
+	/*method totalBultos(){
+		var bultos1 = [knightRider, arenaAGranel, residuosRadioactivos]
+		var bultos2 = [bumblebee, embalajeDeSeguridad]
+		if (ladrillos.cantidad().between(1,101)){
+			bultos1.add(ladrillos)
+		}
+		else if (ladrillos.cantidad().between(101,300)){
+			bultos2.add(ladrillos)
+		}
+		else {}
+	}*/ 
 	
 	method pesos(){
 		return cosas.map({cosa => cosa.peso()})

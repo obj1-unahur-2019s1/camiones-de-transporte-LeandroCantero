@@ -12,27 +12,23 @@ object bumblebee {
 }
 
 //Paquete de ladrillos:
-object paqueteDeLadrillos {
-	var ladrillos = 0
-	method peso(){return ladrillos*2}
-	method nivelPeligrosidad(){return 2}
-	method cantidadLadrillos(cantidad){ladrillos = cantidad}	
+class PaqueteDeLadrillos {
+	var property cantidad = 0
+	method peso(){return cantidad*2}
+	method nivelPeligrosidad(){return 2}	
 }
   
 //Arena a granel:
 object arenaAGranel {
-	var peso = 0
-	method peso(){return peso}
+	var property peso = 0
 	method nivelPeligrosidad(){return 1}
-	method agregarPeso(kg){return peso += kg}
 }
  
 //Batería antiaérea:
-object bateriaAGranel {
-	var misiles = false
+object bateriaAntiaerea {
+	var property misiles = false
 	method peso(){return if (misiles) {300} else {200}}
 	method nivelPeligrosidad(){return if (misiles) 100 else {0}}
-	method ponerMisiles(){misiles = true}
 }
 
 //Contenedor portuario:
